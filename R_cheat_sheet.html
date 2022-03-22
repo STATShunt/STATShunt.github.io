@@ -186,13 +186,14 @@ pre code {
 <div id="page-1-examples" class="section level2">
 <h2>Page 1 examples</h2>
 <div id="help" class="section level3">
-<h3>Help</h3>
+<h3>help</h3>
+<p>Use help as a first resort.</p>
 <pre class="r"><code>?mean  # help on the function to take averages (watch out for removing na&#39;s)</code></pre>
 <pre><code>## starting httpd help server ... done</code></pre>
 <pre class="r"><code>?&quot;$&quot; # make sure to use quotes for special symbols</code></pre>
 </div>
 <div id="what-is-in-my-objects" class="section level3">
-<h3>What is in my objects</h3>
+<h3>what is in my objects?</h3>
 <pre class="r"><code>xlabs&lt;- sample(c(&quot;high&quot;,&quot;low&quot;),92, replace=TRUE)
 set.seed(99)
 xmeasurement&lt;-rpois(92,10)
@@ -201,7 +202,7 @@ xplant&lt;-data.frame(plantID=1:length(xlabs), fert=xlabs,height=xmeasurement)
 str(xplant) # summary of what is in the data frame</code></pre>
 <pre><code>## &#39;data.frame&#39;:    92 obs. of  3 variables:
 ##  $ plantID: int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ fert   : chr  &quot;low&quot; &quot;low&quot; &quot;high&quot; &quot;low&quot; ...
+##  $ fert   : chr  &quot;high&quot; &quot;low&quot; &quot;low&quot; &quot;low&quot; ...
 ##  $ height : int  10 11 10 11 8 10 7 11 5 7 ...</code></pre>
 <pre class="r"><code>dim(xplant);ncol(xplant);nrow(xplant)  # check these in the help file ...</code></pre>
 <pre><code>## [1] 92  3</code></pre>
@@ -209,38 +210,37 @@ str(xplant) # summary of what is in the data frame</code></pre>
 <pre><code>## [1] 92</code></pre>
 <pre class="r"><code># View(xplant)</code></pre>
 </div>
-<div id="what-is-my-working-directory" class="section level3">
-<h3>What is my working directory</h3>
+<div id="working-directory" class="section level3">
+<h3>working directory</h3>
+<p>See what is in your working directory.</p>
 <pre class="r"><code>getwd()</code></pre>
 <pre><code>## [1] &quot;C:/Users/hunti/OneDrive - University of Tasmania/Documents/111_live/111_teaching/2022/KLA_201/R_markdown&quot;</code></pre>
+<p>This is where files will be read and written by default (unless a specific file path is specified).</p>
 </div>
 <div id="vectors" class="section level3">
-<h3>Vectors</h3>
+<h3>vectors</h3>
 <pre class="r"><code>c(1,2,3,99)</code></pre>
 <pre><code>## [1]  1  2  3 99</code></pre>
 <pre class="r"><code>1000:1010</code></pre>
 <pre><code>##  [1] 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010</code></pre>
 <pre class="r"><code>set.seed(101)
-
 x&lt;-rnorm(10)
 x</code></pre>
 <pre><code>##  [1] -0.3260365  0.5524619 -0.6749438  0.2143595  0.3107692  1.1739663
 ##  [7]  0.6187899 -0.1127343  0.9170283 -0.2232594</code></pre>
-<pre class="r"><code>sort(x)</code></pre>
+<pre class="r"><code>sort(x)  # put things in order</code></pre>
 <pre><code>##  [1] -0.6749438 -0.3260365 -0.2232594 -0.1127343  0.2143595  0.3107692
 ##  [7]  0.5524619  0.6187899  0.9170283  1.1739663</code></pre>
 <div id="vector-elements" class="section level4">
 <h4>Vector elements</h4>
+<p>Using element references and square brackets.</p>
 <pre class="r"><code>x&lt;-101:110
 
 x[4]</code></pre>
 <pre><code>## [1] 104</code></pre>
 <pre class="r"><code>x[-4]</code></pre>
 <pre><code>## [1] 101 102 103 105 106 107 108 109 110</code></pre>
-</div>
-</div>
-<div id="vector-elements-with-true-and-false" class="section level3">
-<h3>Vector elements with TRUE and FALSE</h3>
+<p>Vector elements with TRUE and FALSE</p>
 <pre class="r"><code>x&lt;-101:110
 
 x[x==104]</code></pre>
@@ -256,11 +256,10 @@ x[x==104]</code></pre>
 <pre class="r"><code>x[x%in%c(101,106)]</code></pre>
 <pre><code>## [1] 101 106</code></pre>
 </div>
+</div>
 <div id="reading-and-writing-files" class="section level3">
 <h3>reading and writing files</h3>
-</div>
-<div id="read-in-raw-file-from-github-formatted-with-columns-set-by-a-comma" class="section level3">
-<h3>read in raw file from GITHUB, formatted with columns set by a comma</h3>
+<p>read in raw file from GITHUB, formatted with columns set by a comma</p>
 <pre class="r"><code>xurl&lt;-&quot;https://raw.githubusercontent.com/STATShunt/tia/master/data/cannabis/data_buds.csv&quot;
 xbud&lt;-read.csv(file=xurl,check.names = FALSE,stringsAsFactors =TRUE)
 
@@ -318,8 +317,8 @@ fsum_simp(x)</code></pre>
 </div>
 <div id="page-2-examples" class="section level2">
 <h2>Page 2 examples</h2>
-<div id="types" class="section level3">
-<h3>Types</h3>
+<div id="variable-types" class="section level3">
+<h3>variable types</h3>
 <pre class="r"><code>xl&lt;-c(TRUE,FALSE)
 str(xl)</code></pre>
 <pre><code>##  logi [1:2] TRUE FALSE</code></pre>

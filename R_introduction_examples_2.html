@@ -202,10 +202,10 @@ xout</code></pre>
 x&lt;-rnorm(1000,mean=10,sd=2)
 fsum(x)</code></pre>
 <pre><code>##           n        mean          sd 
-## 1000.000000   10.055328    1.999398</code></pre>
+## 1000.000000   10.046008    2.062069</code></pre>
 <pre class="r"><code>fsum(yin=x)</code></pre>
 <pre><code>##           n        mean          sd 
-## 1000.000000   10.055328    1.999398</code></pre>
+## 1000.000000   10.046008    2.062069</code></pre>
 </div>
 <div id="applying-functions-to-matrices" class="section level3">
 <h3>2.32 Applying functions to matrices</h3>
@@ -229,19 +229,19 @@ x</code></pre>
 <p>Be careful what you send to functions that operate on numbers.</p>
 <pre class="r"><code>xdata_extra&lt;-data.frame(group=c(&#39;A&#39;,&#39;A&#39;,&#39;B&#39;,&#39;B&#39;),x=1:4,y=rnorm(4))
 xdata_extra</code></pre>
-<pre><code>##   group x          y
-## 1     A 1 -1.8357749
-## 2     A 2 -0.7391034
-## 3     B 3  0.2288219
-## 4     B 4 -1.0273479</code></pre>
+<pre><code>##   group x           y
+## 1     A 1 -0.05754239
+## 2     A 2  0.80947888
+## 3     B 3 -0.46985152
+## 4     B 4  1.48528304</code></pre>
 <pre class="r"><code>str(xdata_extra)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  3 variables:
 ##  $ group: chr  &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot;
 ##  $ x    : int  1 2 3 4
-##  $ y    : num  -1.836 -0.739 0.229 -1.027</code></pre>
+##  $ y    : num  -0.0575 0.8095 -0.4699 1.4853</code></pre>
 <pre class="r"><code>apply(xdata_extra[,2:3],2,sum) # ok: only columns 2 and 3 go to function</code></pre>
 <pre><code>##         x         y 
-## 10.000000 -3.373404</code></pre>
+## 10.000000  1.767368</code></pre>
 </div>
 <div id="lists" class="section level3">
 <h3>2.34 lists</h3>
@@ -272,64 +272,64 @@ x2$x</code></pre>
 <p>Split a data frame using meaningful subgroups. Then you are doing statistics and data science.</p>
 <pre class="r"><code>x&lt;-data.frame(treatment=c(&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,&quot;A&quot;,&quot;B&quot;),value=rnorm(5))
 x</code></pre>
-<pre><code>##   treatment      value
-## 1         A  0.1472527
-## 2         A  0.8154183
-## 3         B  0.2839545
-## 4         A -0.7615102
-## 5         B -0.2497632</code></pre>
+<pre><code>##   treatment       value
+## 1         A  0.84237234
+## 2         A  1.75007150
+## 3         B  1.78941280
+## 4         A  0.27016971
+## 5         B -0.08081262</code></pre>
 <pre class="r"><code>xlist&lt;-split(x,x$treatment)
 
 names(xlist)</code></pre>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot;</code></pre>
 <pre class="r"><code>xlist[[2]]</code></pre>
-<pre><code>##   treatment      value
-## 3         B  0.2839545
-## 5         B -0.2497632</code></pre>
+<pre><code>##   treatment       value
+## 3         B  1.78941280
+## 5         B -0.08081262</code></pre>
 <pre class="r"><code>xlist$B</code></pre>
-<pre><code>##   treatment      value
-## 3         B  0.2839545
-## 5         B -0.2497632</code></pre>
+<pre><code>##   treatment       value
+## 3         B  1.78941280
+## 5         B -0.08081262</code></pre>
 </div>
 <div id="you-can-operate-on-each-element-of-a-list-with-lapply-or-sapply" class="section level3">
 <h3>2.36 You can operate on each element of a list with lapply or sapply</h3>
 <p>But make sure you specify which pieces are numeric!</p>
 <pre class="r"><code>x&lt;-data.frame(treatment=c(&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,&quot;A&quot;,&quot;B&quot;),value=rnorm(5),value2=c(1:5) )
 x</code></pre>
-<pre><code>##   treatment       value value2
-## 1         A  0.32590869      1
-## 2         A -0.07691533      2
-## 3         B  0.16368372      3
-## 4         A -0.60680701      4
-## 5         B -0.51130737      5</code></pre>
+<pre><code>##   treatment      value value2
+## 1         A -0.6844111      1
+## 2         A  0.9389226      2
+## 3         B -0.2629470      3
+## 4         A -0.4456940      4
+## 5         B -1.9807431      5</code></pre>
 <pre class="r"><code>xlist&lt;-split(x,x$treatment)
 
 # difficult to specify just the numeric columns for maths (could use $value)
 lapply(xlist,function(i){mean(i[,2])})</code></pre>
 <pre><code>## $A
-## [1] -0.1192712
+## [1] -0.06372751
 ## 
 ## $B
-## [1] -0.1738118</code></pre>
+## [1] -1.121845</code></pre>
 <pre class="r"><code>lapply(xlist,function(i){apply(i[,2:3],2,mean)}) #multiple columns, using apply nested inside lapply!</code></pre>
 <pre><code>## $A
-##      value     value2 
-## -0.1192712  2.3333333 
+##       value      value2 
+## -0.06372751  2.33333333 
 ## 
 ## $B
-##      value     value2 
-## -0.1738118  4.0000000</code></pre>
+##     value    value2 
+## -1.121845  4.000000</code></pre>
 <pre class="r"><code>lapply(xlist,function(i){mean(i$value)})</code></pre>
 <pre><code>## $A
-## [1] -0.1192712
+## [1] -0.06372751
 ## 
 ## $B
-## [1] -0.1738118</code></pre>
+## [1] -1.121845</code></pre>
 <p>sapply helps gather things, but may give unusual results (e.g. transposed matrices)</p>
 <pre class="r"><code>sapply(xlist,function(i){apply(i[,2:3],2,mean)}) </code></pre>
-<pre><code>##                 A          B
-## value  -0.1192712 -0.1738118
-## value2  2.3333333  4.0000000</code></pre>
+<pre><code>##                  A         B
+## value  -0.06372751 -1.121845
+## value2  2.33333333  4.000000</code></pre>
 </div>
 <div id="the-function-aggregate-gets-you-similar-results-for-less-work" class="section level3">
 <h3>2.37 The function “aggregate” gets you similar results for less work</h3>
@@ -337,17 +337,17 @@ lapply(xlist,function(i){mean(i[,2])})</code></pre>
 <pre class="r"><code>x&lt;-data.frame(treatment=c(&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,&quot;A&quot;,&quot;B&quot;),value=rnorm(5))
 x$colour&lt;-c(&quot;red&quot;,&quot;red&quot;,&quot;green&quot;,&quot;green&quot;,&quot;green&quot;)
 x</code></pre>
-<pre><code>##   treatment       value colour
-## 1         A  0.09108158    red
-## 2         A  0.25936115    red
-## 3         B -0.11055605  green
-## 4         A  0.76783920  green
-## 5         B -0.73458507  green</code></pre>
+<pre><code>##   treatment      value colour
+## 1         A  0.2325393    red
+## 2         A  0.1912979    red
+## 3         B -1.1322787  green
+## 4         A -1.2320276  green
+## 5         B -0.4396373  green</code></pre>
 <pre class="r"><code># split by &quot;treatment&quot; column and do something with &quot;value&quot;
 aggregate(value~treatment,FUN=mean,data=x)</code></pre>
 <pre><code>##   treatment      value
-## 1         A  0.3727606
-## 2         B -0.4225706</code></pre>
+## 1         A -0.2693968
+## 2         B -0.7859580</code></pre>
 <pre class="r"><code># use a custom function
 fsum&lt;-function(yin){
   out&lt;-c(length(yin),mean(yin),sd(yin))
@@ -357,10 +357,10 @@ fsum&lt;-function(yin){
 
 #aggregate (i.e. split and gather) by both treatment and colour
 aggregate(value~treatment+colour,FUN=fsum,data=x)</code></pre>
-<pre><code>##   treatment colour    value.n value.mean   value.sd
-## 1         A  green  1.0000000  0.7678392         NA
-## 2         B  green  2.0000000 -0.4225706  0.4412552
-## 3         A    red  2.0000000  0.1752214  0.1189916</code></pre>
+<pre><code>##   treatment colour     value.n  value.mean    value.sd
+## 1         A  green  1.00000000 -1.23202759          NA
+## 2         B  green  2.00000000 -0.78595800  0.48977139
+## 3         A    red  2.00000000  0.21191864  0.02916208</code></pre>
 </div>
 </div>
 

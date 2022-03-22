@@ -202,7 +202,7 @@ xplant&lt;-data.frame(plantID=1:length(xlabs), fert=xlabs,height=xmeasurement)
 str(xplant) # summary of what is in the data frame</code></pre>
 <pre><code>## &#39;data.frame&#39;:    92 obs. of  3 variables:
 ##  $ plantID: int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ fert   : chr  &quot;high&quot; &quot;low&quot; &quot;low&quot; &quot;low&quot; ...
+##  $ fert   : chr  &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;low&quot; ...
 ##  $ height : int  10 11 10 11 8 10 7 11 5 7 ...</code></pre>
 <pre class="r"><code>dim(xplant);ncol(xplant);nrow(xplant)  # check these in the help file ...</code></pre>
 <pre><code>## [1] 92  3</code></pre>
@@ -259,7 +259,7 @@ x[x==104]</code></pre>
 </div>
 <div id="reading-and-writing-files" class="section level3">
 <h3>reading and writing files</h3>
-<p>read in raw file from GITHUB, formatted with columns set by a comma</p>
+<p>Read in raw file from GITHUB, formatted with columns set by a comma (assumes internet connection).</p>
 <pre class="r"><code>xurl&lt;-&quot;https://raw.githubusercontent.com/STATShunt/tia/master/data/cannabis/data_buds.csv&quot;
 xbud&lt;-read.csv(file=xurl,check.names = FALSE,stringsAsFactors =TRUE)
 
@@ -267,7 +267,7 @@ xbud&lt;-read.csv(file=xurl,check.names = FALSE,stringsAsFactors =TRUE)
 getwd() # look here for any files written</code></pre>
 <pre><code>## [1] &quot;C:/Users/hunti/OneDrive - University of Tasmania/Documents/111_live/111_teaching/2022/KLA_201/R_markdown&quot;</code></pre>
 <pre class="r"><code>write.csv(xbud,file=&quot;myxbud_pesky_row_names.csv&quot;)
-write.csv(xbud,file=&quot;myxbud.csv&quot;,row.names = FALSE) # no column of row names!
+write.csv(xbud,file=&quot;myxbud.csv&quot;,row.names = FALSE) # no redundant row names!
 
 # now try reading myxbud from your working directory
 getwd() # look here for any files to load</code></pre>
@@ -287,7 +287,7 @@ str(xbud_new_wrong) </code></pre>
 ##  $ CBC      : num  0.0433 0.0438 0.0931 0.069 0.0353 ...
 ##  $ CBCA     : num  0.111 0.136 0.137 0.228 0.151 ...</code></pre>
 <pre class="r"><code>xbud_new&lt;-read.csv(file=&quot;myxbud.csv&quot;)
-str(xbud_new) #check there are no rownames</code></pre>
+str(xbud_new) #check everything is exactly the same as xbud</code></pre>
 <pre><code>## &#39;data.frame&#39;:    24 obs. of  10 variables:
 ##  $ Sample   : int  62 66 69 79 58 65 75 78 53 73 ...
 ##  $ treatment: int  1 1 1 1 2 2 2 2 3 3 ...
@@ -305,12 +305,12 @@ str(xbud_new) #check there are no rownames</code></pre>
 <pre class="r"><code>fsum_simp&lt;-function(x){
   out&lt;-c(length(x),mean(x),sd(x))
   names(out)&lt;-c(&quot;n&quot;,&quot;mean&quot;,&quot;sd&quot;)
-  out #return(out) #is equivalent
+  out #return(out) is equivalent
 }
 
 x&lt;-rnorm(9)
 
-fsum_simp(x)</code></pre>
+fsum_simp(x)  # you get back what is &quot;out&quot; from the function</code></pre>
 <pre><code>##          n       mean         sd 
 ##  9.0000000 -0.2607157  0.8641977</code></pre>
 </div>

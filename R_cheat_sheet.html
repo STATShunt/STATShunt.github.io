@@ -202,7 +202,7 @@ xplant&lt;-data.frame(plantID=1:length(xlabs), fert=xlabs,height=xmeasurement)
 str(xplant) # summary of what is in the data frame</code></pre>
 <pre><code>## &#39;data.frame&#39;:    92 obs. of  3 variables:
 ##  $ plantID: int  1 2 3 4 5 6 7 8 9 10 ...
-##  $ fert   : chr  &quot;high&quot; &quot;high&quot; &quot;high&quot; &quot;low&quot; ...
+##  $ fert   : chr  &quot;low&quot; &quot;low&quot; &quot;low&quot; &quot;high&quot; ...
 ##  $ height : int  10 11 10 11 8 10 7 11 5 7 ...</code></pre>
 <pre class="r"><code>dim(xplant);ncol(xplant);nrow(xplant)  # check these in the help file ...</code></pre>
 <pre><code>## [1] 92  3</code></pre>
@@ -310,7 +310,7 @@ str(xbud_new) #check everything is exactly the same as xbud</code></pre>
 
 x&lt;-rnorm(9)
 
-fsum_simp(x)  # you get back what is &quot;out&quot; from the function</code></pre>
+fsum_simp(x)  # you get back what is in the variable &quot;out&quot; from the function</code></pre>
 <pre><code>##          n       mean         sd 
 ##  9.0000000 -0.2607157  0.8641977</code></pre>
 </div>
@@ -393,7 +393,7 @@ ldiff</code></pre>
 </div>
 <div id="data-frames" class="section level3">
 <h3>data frames</h3>
-<p>Lists can hold data of different types but each column must be the same length (so a data frame is a special rectangular matrix).</p>
+<p>Data frames can hold data of different types but each column must be the same length (so a data frame is a special rectangular matrix).</p>
 <pre class="r"><code>x&lt;-1:5
 y&lt;-c(&quot;t1&quot;,&quot;t1&quot;,&quot;t2&quot;,&quot;t2&quot;,&quot;t2&quot;)
 
